@@ -1,11 +1,9 @@
 # STEMMIO
-The scope of the STEM Identity Ontology is specific to terminological content relevant to the STEM identity constructs, metrics, and analytics.
-
-STEMIO: The Science, Technology, Engineering, and Mathematics Identity Ontology
+The scope of the Science, Technology, Engineering, and Mathematics Identity Ontology Identity Ontology (STEMIO) is specific to terminological content relevant to the STEM identity constructs, metrics, and analytics.
 
 STEM identity may be described as the ways in which individuals fit within STEM fields, and in particular, how individuals make meaning of scientific experiences and how society structures possile meanings for those experiences. STEM identity plays a powerful role in an individual's success or failure, in academic and career environments. 
 
-The Science, Technology, Engineering, and Mathematics Identity Ontology (STEMIO) is an open-source ontology designed to describe the domain of STEM Identity research, including a variety of stakeholder perspectives, as well as cross-discipline constructs. 
+STEMIO is an open-source ontology designed to describe the domain of STEM Identity research, including a variety of stakeholder perspectives, as well as cross-discipline constructs. 
 
 STEMIO adopts the upper-level ontology architecture of Basic Formal Ontology (BFO), as well as the more domain-specific Mental Functioning Ontology. STEMIO is designed to extend these ontologies to the domain of STEM Identity research, in accordance with Open Biological and Biomedical Ontology (OBO) Foundry standards. Where needed, STEMIO adopts design patterns and terms from the Common Core Ontologies (CCO), which also extend (BFO). 
 
