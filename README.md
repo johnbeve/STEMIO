@@ -9,7 +9,6 @@ STEMIO adopts the upper-level ontology architecture of Basic Formal Ontology (BF
 
 Once further developed, STEMIO will be submitted for admission to the OBO Foundry library. STEMIO will moroever, be made available on commonly used ontology repositories such as Ontobee, Bioportal, and OLS. 
 
-STEMIO Developers:
 STEMIO was initiated and co-developed by:
 
 John Beverley, Assistant Professor, Department of Philosophy, University at Buffalo
