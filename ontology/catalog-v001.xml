@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/omrse/releases/2022-09-06/omrse.owl" uri="file:/Users/john/Documents/omrse_classes.owl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/NPT/2021-05-27/NPT.owl" uri="file:/Users/john/Downloads/NPT.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1669474394561" name="http://purl.obolibrary.org/obo/MF.owl" uri="stemio.owl"/>
+    </group>
+</catalog>
