@@ -11,9 +11,11 @@ Once further developed, STEMIO will be submitted for admission to the OBO Foundr
 
 STEMIO was initiated and co-developed by:
 
-John Beverley, Assistant Professor, Department of Philosophy, University at Buffalo \n
-Ying Sun, Associate Professor, Department of Information Science, University at Buffalo
-Xiufeng Liu, Professor, Department of Learning & Instruction, University at Buffalo
+[John Beverley](https://johnbeverley.com/), Assistant Professor, Department of Philosophy, University at Buffalo 
+
+[Ying Sun](https://www.acsu.buffalo.edu/~sun3/), Associate Professor, Department of Information Science, University at Buffalo
+
+[Xiufeng Liu](https://ed.buffalo.edu/teaching/directory/faculty/profile.html?uid=xliu5), Professor, Department of Learning & Instruction, University at Buffalo
 
 Everyone who would like to contribute to the CIDO development is welcome to join our development team. Thanks.
 
