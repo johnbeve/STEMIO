@@ -14,15 +14,153 @@
 @base <http://purl.obolibrary.org/obo/STEMIO.owl> .
 
 <http://purl.obolibrary.org/obo/STEMIO.owl> rdf:type owl:Ontology ;
-                                            owl:versionIRI <http://purl.obolibrary.org/obo/STEMIO/2022-011-26/STEMIO.owl> ;
-                                            owl:imports <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2021-03-01/UnitsOfMeasureOntology> ;
-                                            dc:contributor "John Beverley" ;
-                                                            "Ying Sun" ;
-                                                            "Xiufeng Liu" .
-                                            dc:license <https://creativecommons.org/licenses/by/3.0> .
-                                            dc:title "STEM Identity Ontology" .
-                                            protege:defaultLanguage "en"^^xsd:string ;
-                                            rdfs:comment "The scope of the Science, Technology, Engineering, and Mathematics Identity Ontology Identity Ontology (STEMIO) is specific to terminological content relevant to the STEM identity constructs, metrics, and analytics." .
+                                             owl:versionIRI <http://purl.obolibrary.org/obo/STEMIO/2022-011-26/STEMIO.owl> ;
+                                             owl:imports <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2021-03-01/UnitsOfMeasureOntology> ;
+                                             protege:defaultLanguage "en"^^xsd:string ;
+                                             obo:IAO_0000116 "BFO 2 Reference: BFO does not claim to provide complete coverage of entities of all types. It seeks only to provide coverage of those entities studied by empirical science together with those entities which affect or are involved in human activities such as data processing and planning - coverage that is sufficiently broad to provide assistance to those engaged in building domain ontologies for purposes of data annotation."@en ,
+                                                             "BFO 2 Reference: BFO's treatment of continuants and occurrents - as also its treatment of regions, rests on a dichotomy between space and time, and on the view that there are two perspectives on reality - earlier called the 'SNAP' and 'SPAN' perspectives, both of which are essential to the non-reductionist representation of reality as we understand it from the best available science." ,
+                                                             "BFO 2 Reference: For both terms and relational expressions in BFO, we distinguish between primitive and defined. 'Entity' is an example of a  primitive term. Primitive terms in a highest-level ontology such as BFO are terms that are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms." ;
+                                             obo:IAO_0000118 "NPT"@en ;
+                                             obo:IAO_0000589 "Ontology for Biomedical Investigations"@en ;
+                                             dc:contributor "Advisors for this project come from the IFOMIS group, Saarbruecken and from the Co-ODE group in Manchester"@en ,
+                                                            "Alan Ruttenberg" ,
+                                                            "Albert Goldfain" ,
+                                                            "Alexander D. Diehl"@en ,
+                                                            "Alexander P. Cox"@en ,
+                                                            "Barry Smith" ,
+                                                            "Bill Duncan" ,
+                                                            "Bjoern Peters" ,
+                                                            "Chris Mungall" ,
+                                                            "Daniel Welch" ,
+                                                            "David Osumi-Sutherland" ,
+                                                            "Fabian Neuhaus" ,
+                                                            "Holger Stenzhorn" ,
+                                                            "James A. Overton" ,
+                                                            "Janna Hastings" ,
+                                                            "Jie Zheng" ,
+                                                            "John Beverley" ,
+                                                            "Jonathan Bona" ,
+                                                            "Larry Hunter" ,
+                                                            "Leonard Jacuzzo" ,
+                                                            "Ludger Jansen" ,
+                                                            "Mark Jensen"@en ,
+                                                            "Mark Ressler" ,
+                                                            "Mathias Brochhausen" ,
+                                                            "Mauricio Almeida" ,
+                                                            "Melanie Courtot" ,
+                                                            "Pierre Grenon" ,
+                                                            "Randall Dipert" ,
+                                                            "Ron Rudnicki" ,
+                                                            "Selja Seppälä" ,
+                                                            "Stefan Schulz" ,
+                                                            "Thomas Bittner" ,
+                                                            "Werner Ceusters" ,
+                                                            "Xiufeng Liu" ,
+                                                            "Ying Sun" ,
+                                                            "Yongqun \"Oliver\" He" ;
+                                             dc:creator "Alan Ruttenberg"@en ,
+                                                        "Allyson Lister"@en ,
+                                                        "Amanda Hicks" ,
+                                                        "Barry Smith"@en ,
+                                                        "Bill Bug"@en ,
+                                                        "Bjoern Peters"@en ,
+                                                        "Carlo Torniai"@en ,
+                                                        "Chris Mungall"@en ,
+                                                        "Chris Stoeckert"@en ,
+                                                        "Chris Taylor"@en ,
+                                                        "Christian Bolling"@en ,
+                                                        "Cristian Cocos"@en ,
+                                                        "Daniel Rubin"@en ,
+                                                        "Daniel Schober"@en ,
+                                                        "Dawn Field"@en ,
+                                                        "Dirk Derom"@en ,
+                                                        "Elisabetta Manduchi"@en ,
+                                                        "Eric Deutsch"@en ,
+                                                        "Frank Gibson"@en ,
+                                                        "Gilberto Fragoso"@en ,
+                                                        "Helen C. Causton"@en ,
+                                                        "Helen Parkinson"@en ,
+                                                        "Holger Stenzhorn"@en ,
+                                                        "James A. Overton"@en ,
+                                                        "James Malone"@en ,
+                                                        "Jay Greenbaum"@en ,
+                                                        "Jeffrey Grethe"@en ,
+                                                        "Jennifer Fostel"@en ,
+                                                        "Jessica Turner"@en ,
+                                                        "Jie Zheng"@en ,
+                                                        "Joe White"@en ,
+                                                        "John Westbrook"@en ,
+                                                        "Kevin Clancy"@en ,
+                                                        "Larisa Soldatova"@en ,
+                                                        "Lawrence Hunter"@en ,
+                                                        "Liju Fan"@en ,
+                                                        "Luisa Montecchi"@en ,
+                                                        "Mathias Brochhausen"@en ,
+                                                        "Matthew Brush"@en ,
+                                                        "Matthew Pocock"@en ,
+                                                        "Melanie Courtot"@en ,
+                                                        "Melissa Haendel"@en ,
+                                                        "Mervi Heiskanen"@en ,
+                                                        "Monnie McGee"@en ,
+                                                        "Norman Morrison"@en ,
+                                                        "Philippe Rocca-Serra"@en ,
+                                                        "Phillip Lord"@en ,
+                                                        "Pierre Grenon"@en ,
+                                                        "Richard Bruskiewich"@en ,
+                                                        "Richard Scheuermann"@en ,
+                                                        "Robert Stevens"@en ,
+                                                        "Ryan R. Brinkman"@en ,
+                                                        "Shariq Tariq"@en ,
+                                                        "Stefan Wiemann"@en ,
+                                                        "Susanna-Assunta Sansone"@en ,
+                                                        "Swetha Garimalla"@en ,
+                                                        "Tanya Gray"@en ,
+                                                        "Tina Hernandez-Boussard"@en ,
+                                                        "Trish Whetzel"@en ,
+                                                        "William Hogan"@en ,
+                                                        "Yongqun He"@en ;
+                                             dc:date "2009-07-31"^^xsd:date ;
+                                             dc:description "The Ontology for Biomedical Investigations (OBI) is build in a collaborative, international effort and will serve as a resource for annotating biomedical investigations, including the study design, protocols and instrumentation used, the data generated and the types of analysis performed on the data. This ontology arose from the Functional Genomics Investigation Ontology (FuGO) and will contain both terms that are common to all biomedical investigations, including functional genomics investigations and those that are more domain specific."@en ;
+                                             dc:format "OWL-DL"@en ;
+                                             dc:license "https://creativecommons.org/licenses/by/3.0/" ;
+                                             dc:subject "An ontology for the annotation of biomedical and functional genomics experiments."@en ;
+                                             dc:title "STEM Identity Ontology" ;
+                                             terms:license <http://creativecommons.org/licenses/by/4.0/> ,
+                                                           <https://creativecommons.org/publicdomain/zero/1.0/> ,
+                                                           "http://creativecommons.org/licenses/by/4.0/" ,
+                                                           "https://creativecommons.org/licenses/by/4.0/" ;
+                                             terms:title "Ontology for Biomedical Investigations" ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/code_license> <https://opensource.org/licenses/BSD-3-Clause> ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/content_license> <https://creativecommons.org/licenses/by/3.0/> ;
+                                             rdfs:comment "An import module containing a subset of relations from the OBO Relation Ontology (RO) for use in CCO."@en ,
+                                                          "Please cite the OBI consortium http://purl.obolibrary.org/obo/obi where traditional citation is called for. However it is adequate that individual terms be attributed simply by use of the identifying PURL for the term, in projects that refer to them."^^xsd:string ,
+                                                          "Please see the project site https://github.com/BFO-ontology/BFO, the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel, the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://purl.obolibrary.org/obo/bfo/dev/bfo2-reference.docx. This ontology is generated from a specification at https://github.com/BFO-ontology/BFO/tree/master/src/ontology/owl-group/specification/ and with the code that generates the OWL version in https://github.com/BFO-ontology/BFO/tree/master/src/tools/. A very early version of BFO version 2 in CLIF is at http://purl.obolibrary.org/obo/bfo/dev/bfo.clif."@en ,
+                                                          "The BSD license on the BFO project site refers to code used to build BFO."@en ,
+                                                          "The Mental Functioning Ontology (MF) was first described in the publication available at http://www.jbiomedsem.com/content/1/1/10 entitled 'Foundations for a realist ontology of mental disease' (Barry Smith and Werner Ceusters). " ,
+                                                          "This BFO 2.0 version represents a major update to BFO and is not strictly backwards compatible with BFO 1.1. The previous OWL version of BFO, version 1.1.1 will remain available at http://ifomis.org/bfo/1.1 and will no longer be updated. The BFO 2.0 OWL is a classes-only specification. The incorporation of core relations has been held over for a later version." ,
+                                                          "This ontology grew out of efforts to represent the reality underlying the demographic information required by the US federal government's \"meaningful use\" criteria for electronic medical records and a presentation by Dr. William Hogan at the Electronic Health Record of the Future conference in Buffalo, NY http://ontology.buffalo.edu/EHR/Demographics_Hogan_Buffalo_2010_09_22.ppt"@en ,
+                                                          "This ontology is designed to represent generic types of information as well as the relationships between information and other entities."@en ,
+                                                          "This ontology is designed to represent many of the relations (i.e. object properties) that hold between entities at the level of the mid-level Common Core Ontologies."@en ,
+                                                          "This ontology is designed to represent sites, spatial regions, and other entities, especially those that are located near the surface of Earth, as well as the relations that hold between them."@en ,
+                                                          "This ontology is designed to represent standard measurement units that are used when measuring various attributes of entities."@en ,
+                                                          "This ontology is designed to represent temporal regions and the relations that hold between them."@en ;
+                                             rdfs:isDefinedBy <http://purl.obolibrary.org/obo/bfo/dev/bfo.clif> ,
+                                                              <https://github.com/BFO-ontology/BFO/tree/master/src/ontology/owl-group/specification/> ;
+                                             rdfs:seeAlso <http://groups.google.com/group/bfo-devel> ,
+                                                          <http://groups.google.com/group/bfo-discuss> ,
+                                                          <http://groups.google.com/group/bfo-owl-devel> ,
+                                                          <http://purl.obolibrary.org/obo/bfo/dev/owl> ,
+                                                          <https://github.com/BFO-ontology/BFO/tree/master/src/tools/> ;
+                                             owl:versionInfo "2022-07-11"^^xsd:string ,
+                                                             "2022-09-06"^^xsd:string ,
+                                                             "2022-11-13" ,
+                                                             "May 27, 2021"^^xsd:string ,
+                                                             "Version 1.3"@en ,
+                                                             "Version 1.7.7"^^xsd:string ;
+                                             foaf:homepage <http://basic-formal-ontology.org/> ,
+                                                           <http://ifomis.org/bfo> ,
+                                                           <https://github.com/BFO-ontology/BFO> ;
+                                             foaf:mbox <mailto:bfo-owl-devel@googlegroups.com> .
 
 #################################################################
 #    Annotation properties
@@ -8783,6 +8921,11 @@ obo:STEMIO_0001525 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/STEMIO_0001526
 obo:STEMIO_0001526 rdf:type owl:Class ;
                    rdfs:subClassOf obo:STEMIO_0001513 ;
+                   obo:IAO_0000116 """Example: Engineer students working as members of a group, e.g. I'm good at this vs I'm providing a support role vs I'm not good at this, etc. 
+
+How individuals are welcomed or not to such groups. 
+
+Perhaps roles?"""@en ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "participative identity"@en .
 
@@ -8807,6 +8950,10 @@ obo:STEMIO_0001529 rdf:type owl:Class ;
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty obo:STEMIO_0001559 ;
                                      owl:someValuesFrom obo:STEMIO_0001555
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty obo:STEMIO_0001559 ;
+                                     owl:someValuesFrom obo:STEMIO_0001557
                                    ] ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty obo:STEMIO_0001559 ;
@@ -8906,7 +9053,11 @@ obo:STEMIO_0001540 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001541
 obo:STEMIO_0001541 rdf:type owl:Class ;
-                   rdfs:subClassOf obo:STEMIO_0001546 ;
+                   rdfs:subClassOf obo:STEMIO_0001546 ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty obo:BFO_0000051 ;
+                                     owl:someValuesFrom obo:STEMIO_0001549
+                                   ] ;
                    dc:creator "John Beverley"^^xsd:string ;
                    <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Marcia's identity status theory"@en ,
                                                                                               "identity status theory"@en ;
@@ -10490,6 +10641,24 @@ W3C (https://www.w3.org/TR/NOTE-datetime)"""@en ,
 
 ###  http://www.w3.org/2002/07/owl#Thing
 owl:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001560
+obo:STEMIO_0001560 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001557 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "creative"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001561
+obo:STEMIO_0001561 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001529 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "math identity"@en .
 
 
 [ obo:IAO_0000412 obo:uberon.owl
