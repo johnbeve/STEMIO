@@ -17,7 +17,7 @@ STEMIO was initiated and co-developed by:
 
 [Xiufeng Liu](https://ed.buffalo.edu/teaching/directory/faculty/profile.html?uid=xliu5), Professor, Department of Learning & Instruction, University at Buffalo
 
-Everyone who would like to contribute to the CIDO development is welcome to join our development team. Thanks.
+Everyone who would like to contribute to the STEMIO development is welcome to join our development team. Thanks.
 
 Web Deposition:
 Ontobee: TBD
