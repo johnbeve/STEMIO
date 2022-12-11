@@ -20,7 +20,6 @@
 
 <http://purl.obolibrary.org/obo/STEMIO.owl> rdf:type owl:Ontology ;
                                              owl:versionIRI <http://purl.obolibrary.org/obo/STEMIO/2022-011-26/STEMIO.owl> ;
-                                             owl:imports <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2021-03-01/UnitsOfMeasureOntology> ;
                                              dc:creator "John Beverley" ,
                                                         "Xiufeng Liu" ,
                                                         "Ying Sun" ;
