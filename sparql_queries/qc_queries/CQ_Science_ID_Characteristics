@@ -1,0 +1,14 @@
+# Competency Question: 
+#    What characteristics are associated with science identity?
+# Description: 
+#   Returns a list of characteristics related to the science identity construct. 
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+SELECT DISTINCT ?s ?o
+WHERE {
+    ?s a obo:STEMIO_0001530 ;
+      obo:STEMIO_0001559 ?o.
+    }
