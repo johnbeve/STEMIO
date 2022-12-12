@@ -19,32 +19,22 @@
 @base <http://purl.obolibrary.org/obo/STEMIO.owl> .
 
 <http://purl.obolibrary.org/obo/STEMIO.owl> rdf:type owl:Ontology ;
-                                             owl:versionIRI <http://purl.obolibrary.org/obo/STEMIO/2022-011-26/STEMIO.owl> ;
+                                             owl:versionIRI <http://purl.obolibrary.org/obo/STEMIO/2022-012-11/STEMIO.owl> ;
                                              dc:creator "John Beverley" ,
                                                         "Xiufeng Liu" ,
                                                         "Ying Sun" ;
-                                             terms:license <http://creativecommons.org/licenses/by/4.0/> .
+                                             terms:license <http://creativecommons.org/licenses/by/4.0/> ;
+                                             rdfs:comment """The scope of the Science, Technology, Engineering, and Mathematics Identity Ontology Identity Ontology (STEMIO) is specific to terminological content relevant to the STEM identity constructs, metrics, and analytics.
+
+STEM identity may be described as the ways in which individuals fit within STEM fields, and in particular, how individuals make meaning of scientific experiences and how society structures possile meanings for those experiences. STEM identity plays a powerful role in an individual's success or failure, in academic and career environments.
+
+STEMIO is an open-source ontology designed to describe the domain of STEM Identity research, including a variety of stakeholder perspectives, as well as cross-discipline constructs.
+
+STEMIO adopts the upper-level ontology architecture of Basic Formal Ontology (BFO), as well as the more domain-specific Mental Functioning Ontology. STEMIO is designed to extend these ontologies to the domain of STEM Identity research, in accordance with Open Biological and Biomedical Ontology (OBO) Foundry standards. Where needed, STEMIO adopts design patterns and terms from the Common Core Ontologies (CCO), which also extend (BFO)."""@en .
 
 #################################################################
 #    Annotation properties
 #################################################################
-
-###  http://purl.obolibrary.org/obo/BFO_0000179
-obo:BFO_0000179 rdf:type owl:AnnotationProperty ;
-                obo:IAO_0000115 "Relates an entity in the ontology to the name of the variable that is used to represent it in the code that generates the BFO OWL file from the lispy specification."@en ;
-                obo:IAO_0000232 "Really of interest to developers only"@en ;
-                rdfs:label "BFO OWL specification label"@en ;
-                rdfs:subPropertyOf rdfs:label .
-
-
-###  http://purl.obolibrary.org/obo/BFO_0000180
-obo:BFO_0000180 rdf:type owl:AnnotationProperty ;
-                obo:IAO_0000115 "Relates an entity in the ontology to the term that is used to represent it in the the CLIF specification of BFO2"@en ;
-                obo:IAO_0000119 "Person:Alan Ruttenberg" ;
-                obo:IAO_0000232 "Really of interest to developers only"@en ;
-                rdfs:label "BFO CLIF specification label"@en ;
-                rdfs:subPropertyOf rdfs:label .
-
 
 ###  http://purl.obolibrary.org/obo/IAO_0000111
 obo:IAO_0000111 rdf:type owl:AnnotationProperty ;
@@ -814,6 +804,7 @@ obo:RO_0019002 rdf:type owl:ObjectProperty ;
 ###  http://purl.obolibrary.org/obo/STEMIO_0001559
 obo:STEMIO_0001559 rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:SymmetricProperty ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "positively correlated with"@en .
 
@@ -821,8 +812,18 @@ obo:STEMIO_0001559 rdf:type owl:ObjectProperty ;
 ###  http://purl.obolibrary.org/obo/STEMIO_0001704
 obo:STEMIO_0001704 rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:SymmetricProperty ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "negatively correlated with"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001714
+obo:STEMIO_0001714 rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf obo:RO_0000086 ;
+                   rdf:type owl:AsymmetricProperty ;
+                   rdfs:range obo:STEMIO_0001512 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "has self-identity"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/affects
@@ -880,18 +881,6 @@ CommonCoreOntologies:aggregate_has_role rdf:type owl:ObjectProperty ;
                                         rdfs:label "aggregate has role"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/coincides_with
-CommonCoreOntologies:coincides_with rdf:type owl:ObjectProperty ;
-                                    rdfs:subPropertyOf CommonCoreOntologies:connected_with ;
-                                    rdf:type owl:SymmetricProperty ,
-                                             owl:TransitiveProperty ;
-                                    rdfs:domain obo:BFO_0000141 ;
-                                    rdfs:range obo:BFO_0000141 ;
-                                    CommonCoreOntologies:definition "An immaterial entity im1 coincides with some immaterial entity im2 iff im1 is a spatial part of im2 and im2 is a spatial part of im1."@en ;
-                                    CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                    rdfs:label "coincides with"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/condition_described_by
 CommonCoreOntologies:condition_described_by rdf:type owl:ObjectProperty ;
                                             owl:propertyChainAxiom ( CommonCoreOntologies:described_by
@@ -900,17 +889,6 @@ CommonCoreOntologies:condition_described_by rdf:type owl:ObjectProperty ;
                                             CommonCoreOntologies:definition "c condition_described_by p iff p is an instance of a Performance Specification, and p has part d, and d is an instance of a Descriptive Information Content Entity, and p prescribes an entity s, and d describes c, and c is an entity that is causally relevant to s existing as prescribed by p."@en ;
                                             CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
                                             rdfs:label "condition described by"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/connected_with
-CommonCoreOntologies:connected_with rdf:type owl:ObjectProperty ;
-                                    rdfs:subPropertyOf CommonCoreOntologies:connected_with ;
-                                    rdf:type owl:SymmetricProperty ;
-                                    rdfs:domain obo:BFO_0000141 ;
-                                    rdfs:range obo:BFO_0000141 ;
-                                    CommonCoreOntologies:definition "An immaterial entity im1 is connected with some immaterial entity im2 iff there exists some immaterial entity im3 that is common to both im1 and im2."@en ;
-                                    CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                    rdfs:label "connected with"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/described_by
@@ -960,17 +938,6 @@ CommonCoreOntologies:disposition_of_aggregate rdf:type owl:ObjectProperty ;
                                               CommonCoreOntologies:definition "x disposition_of_aggregate y iff y is an instance of Object Aggregate and x is an instance of Disposition, such that x disposition_of_aggregate y."@en ;
                                               CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
                                               rdfs:label "disposition of aggregate"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/externally_connects_with
-CommonCoreOntologies:externally_connects_with rdf:type owl:ObjectProperty ;
-                                              rdfs:subPropertyOf CommonCoreOntologies:connected_with ;
-                                              rdf:type owl:SymmetricProperty ;
-                                              rdfs:domain obo:BFO_0000141 ;
-                                              rdfs:range obo:BFO_0000141 ;
-                                              CommonCoreOntologies:definition "An immaterial entity im1 externally connects with some immaterial entity im2 iff im1 connects with im2 and im1 does not overlap with im2."@en ;
-                                              CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                              rdfs:label "externally connects with"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/has_input
@@ -1180,17 +1147,6 @@ CommonCoreOntologies:occurs_on rdf:type owl:ObjectProperty ;
                                CommonCoreOntologies:definition "x occurs_on y iff x is an instance of a process or process boundary and y is an instance of a temporal region, such that the duration of x temporally projects on y."@en ;
                                CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
                                rdfs:label "occurs on"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/partially_overlaps_with
-CommonCoreOntologies:partially_overlaps_with rdf:type owl:ObjectProperty ;
-                                             rdfs:subPropertyOf CommonCoreOntologies:connected_with ;
-                                             rdf:type owl:SymmetricProperty ;
-                                             rdfs:domain obo:BFO_0000141 ;
-                                             rdfs:range obo:BFO_0000141 ;
-                                             CommonCoreOntologies:definition "An immaterial entity im1 partially overlaps with some immaterial entity im2 iff im1 overlaps with im2 and im1 is not a spatial part of im2 and im2 is not a spatial part of im1."@en ;
-                                             CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                             rdfs:label "partially overlaps with"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by
@@ -1415,8 +1371,6 @@ CommonCoreOntologies:has_text_value rdf:type owl:DatatypeProperty ;
 ###  http://purl.obolibrary.org/obo/BFO_0000001
 obo:BFO_0000001 rdf:type owl:Class ;
                 rdfs:subClassOf owl:Thing ;
-                obo:BFO_0000179 "entity" ;
-                obo:BFO_0000180 "Entity" ;
                 obo:IAO_0000112 "Julius Caesar"@en ,
                                 "Verdi’s Requiem"@en ,
                                 "the Second World War"@en ,
@@ -1434,8 +1388,6 @@ obo:BFO_0000002 rdf:type owl:Class ;
                                    owl:onProperty obo:BFO_0000050 ;
                                    owl:someValuesFrom obo:BFO_0000003
                                  ] ;
-                obo:BFO_0000179 "continuant" ;
-                obo:BFO_0000180 "Continuant" ;
                 obo:IAO_0000111 "continuant"@en ;
                 obo:IAO_0000115 "An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts."@en ;
                 obo:IAO_0000116 "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. ‘My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.’ [60, p. 240"@en ;
@@ -1451,8 +1403,6 @@ obo:BFO_0000003 rdf:type owl:Class ;
                                    owl:onProperty obo:BFO_0000050 ;
                                    owl:someValuesFrom obo:BFO_0000002
                                  ] ;
-                obo:BFO_0000179 "occurrent" ;
-                obo:BFO_0000180 "Occurrent" ;
                 obo:IAO_0000115 "An entity that has temporal parts and that happens, unfolds or develops through time."@en ;
                 obo:IAO_0000116 "BFO 2 Reference: every occurrent that is not a temporal or spatiotemporal region is s-dependent on some independent continuant that is not a spatial region"@en ,
                                 "BFO 2 Reference: s-dependence obtains between every process and its participants in the sense that, as a matter of necessity, this process could not have existed unless these or those participants existed also. A process may have a succession of participants at different phases of its unfolding. Thus there may be different players on the field at different times during the course of a football game; but the process which is the entire game s-depends_on all of these players nonetheless. Some temporal parts of this process will s-depend_on on only some of the players."@en ;
@@ -1465,8 +1415,6 @@ obo:BFO_0000004 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000002 ;
                 owl:disjointWith obo:BFO_0000020 ,
                                  obo:BFO_0000031 ;
-                obo:BFO_0000179 "ic" ;
-                obo:BFO_0000180 "IndependentContinuant" ;
                 obo:IAO_0000112 "a chair"@en ,
                                 "a heart"@en ,
                                 "a leg"@en ,
@@ -1486,8 +1434,6 @@ obo:BFO_0000004 rdf:type owl:Class ;
 obo:BFO_0000008 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000003 ;
                 owl:disjointWith obo:BFO_0000015 ;
-                obo:BFO_0000179 "t-region" ;
-                obo:BFO_0000180 "TemporalRegion" ;
                 rdfs:isDefinedBy obo:bfo.owl ;
                 rdfs:label "temporal region"@en .
 
@@ -1495,8 +1441,6 @@ obo:BFO_0000008 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000015
 obo:BFO_0000015 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000003 ;
-                obo:BFO_0000179 "process" ;
-                obo:BFO_0000180 "Process" ;
                 obo:IAO_0000112 "a process of cell-division, \\ a beating of the heart"@en ,
                                 "a process of meiosis"@en ,
                                 "a process of sleeping"@en ,
@@ -1516,8 +1460,6 @@ obo:BFO_0000015 rdf:type owl:Class ;
 obo:BFO_0000016 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000017 ;
                 owl:disjointWith obo:BFO_0000023 ;
-                obo:BFO_0000179 "disposition" ;
-                obo:BFO_0000180 "Disposition" ;
                 obo:IAO_0000112 "an atom of element X has the disposition to decay to an atom of element Y"@en ,
                                 "certain people have a predisposition to colon cancer"@en ,
                                 "children are innately disposed to categorize objects in certain ways."@en ,
@@ -1532,8 +1474,6 @@ obo:BFO_0000016 rdf:type owl:Class ;
 obo:BFO_0000017 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000020 ;
                 owl:disjointWith obo:BFO_0000019 ;
-                obo:BFO_0000179 "realizable" ;
-                obo:BFO_0000180 "RealizableEntity" ;
                 obo:IAO_0000112 "the disposition of this piece of metal to conduct electricity."@en ,
                                 "the disposition of your blood to coagulate"@en ,
                                 "the function of your reproductive organs"@en ,
@@ -1547,8 +1487,6 @@ obo:BFO_0000017 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000019
 obo:BFO_0000019 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000020 ;
-                obo:BFO_0000179 "quality" ;
-                obo:BFO_0000180 "Quality" ;
                 obo:IAO_0000111 "quality"@en ;
                 obo:IAO_0000112 "the ambient temperature of this portion of air"@en ,
                                 "the color of a tomato"@en ,
@@ -1565,8 +1503,6 @@ obo:BFO_0000019 rdf:type owl:Class ;
 obo:BFO_0000020 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000002 ;
                 owl:disjointWith obo:BFO_0000031 ;
-                obo:BFO_0000179 "sdc" ;
-                obo:BFO_0000180 "SpecificallyDependentContinuant" ;
                 obo:IAO_0000111 "specifically dependent continuant"@en ;
                 obo:IAO_0000112 "Reciprocal specifically dependent continuants: the function of this key to open this lock and the mutually dependent disposition of this lock: to be opened by this key"@en ,
                                 "of one-sided specifically dependent continuants: the mass of this tomato"@en ,
@@ -1590,8 +1526,6 @@ obo:BFO_0000020 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000023
 obo:BFO_0000023 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000017 ;
-                obo:BFO_0000179 "role" ;
-                obo:BFO_0000180 "Role" ;
                 obo:IAO_0000112 "John’s role of husband to Mary is dependent on Mary’s role of wife to John, and both are dependent on the object aggregate comprising John and Mary as member parts joined together through the relational quality of being married."@en ,
                                 "the priest role"@en ,
                                 "the role of a boundary to demarcate two neighboring administrative territories"@en ,
@@ -1608,8 +1542,6 @@ obo:BFO_0000023 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000027
 obo:BFO_0000027 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000040 ;
-                obo:BFO_0000179 "object-aggregate" ;
-                obo:BFO_0000180 "ObjectAggregate" ;
                 obo:IAO_0000112 "a collection of cells in a blood biobank."@en ,
                                 "a swarm of bees is an aggregate of members who are linked together through natural bonds"@en ,
                                 "a symphony orchestra"@en ,
@@ -1631,8 +1563,6 @@ obo:BFO_0000027 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000029
 obo:BFO_0000029 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000141 ;
-                obo:BFO_0000179 "site" ;
-                obo:BFO_0000180 "Site" ;
                 obo:IAO_0000112 "Manhattan Canyon)"@en ,
                                 "a hole in the interior of a portion of cheese"@en ,
                                 "a rabbit hole"@en ,
@@ -1655,8 +1585,6 @@ obo:BFO_0000029 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000030
 obo:BFO_0000030 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000040 ;
-                obo:BFO_0000179 "object" ;
-                obo:BFO_0000180 "Object" ;
                 obo:IAO_0000112 "atom"@en ,
                                 "cell"@en ,
                                 "cells and organisms"@en ,
@@ -1680,8 +1608,6 @@ obo:BFO_0000030 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000031
 obo:BFO_0000031 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000002 ;
-                obo:BFO_0000179 "gdc" ;
-                obo:BFO_0000180 "GenericallyDependentContinuant" ;
                 obo:IAO_0000112 "The entries in your database are patterns instantiated as quality instances in your hard drive. The database itself is an aggregate of such patterns. When you create the database you create a particular instance of the generically dependent continuant type database. Each entry in the database is an instance of the generically dependent continuant type IAO: information content entity."@en ,
                                 "the pdf file on your laptop, the pdf file that is a copy thereof on my laptop"@en ,
                                 "the sequence of this protein molecule; the sequence that is a copy thereof in that protein molecule."@en ;
@@ -1693,8 +1619,6 @@ obo:BFO_0000031 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000034
 obo:BFO_0000034 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000016 ;
-                obo:BFO_0000179 "function" ;
-                obo:BFO_0000180 "Function" ;
                 obo:IAO_0000112 "the function of a hammer to drive in nails"@en ,
                                 "the function of a heart pacemaker to regulate the beating of a heart through electricity"@en ,
                                 "the function of amylase in saliva to break down starch into sugar"@en ;
@@ -1707,8 +1631,6 @@ obo:BFO_0000034 rdf:type owl:Class ;
 obo:BFO_0000038 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000008 ;
                 owl:disjointWith obo:BFO_0000148 ;
-                obo:BFO_0000179 "1d-t-region" ;
-                obo:BFO_0000180 "OneDimensionalTemporalRegion" ;
                 obo:IAO_0000112 "the temporal region during which a process occurs."@en ;
                 obo:IAO_0000116 "BFO 2 Reference: A temporal interval is a special kind of one-dimensional temporal region, namely one that is self-connected (is without gaps or breaks)."@en ;
                 rdfs:isDefinedBy obo:bfo.owl ;
@@ -1719,8 +1641,6 @@ obo:BFO_0000038 rdf:type owl:Class ;
 obo:BFO_0000040 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000004 ;
                 owl:disjointWith obo:BFO_0000141 ;
-                obo:BFO_0000179 "material" ;
-                obo:BFO_0000180 "MaterialEntity" ;
                 obo:IAO_0000111 "material entity" ,
                                 "material entity"@en ;
                 obo:IAO_0000112 "a flame"@en ,
@@ -1750,8 +1670,6 @@ obo:BFO_0000040 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000141
 obo:BFO_0000141 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000004 ;
-                obo:BFO_0000179 "immaterial" ;
-                obo:BFO_0000180 "ImmaterialEntity" ;
                 obo:IAO_0000116 "BFO 2 Reference: Immaterial entities are divided into two subgroups:boundaries and sites, which bound, or are demarcated in relation, to material entities, and which can thus change location, shape and size and as their material hosts move or change shape or size (for example: your nasal passage; the hold of a ship; the boundary of Wales (which moves with the rotation of the Earth) [38, 7, 10"@en ;
                 rdfs:isDefinedBy obo:bfo.owl ;
                 rdfs:label "immaterial entity"@en .
@@ -1761,8 +1679,6 @@ obo:BFO_0000141 rdf:type owl:Class ;
 obo:BFO_0000144 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000015 ;
                 owl:disjointWith obo:BFO_0000182 ;
-                obo:BFO_0000179 "process-profile" ;
-                obo:BFO_0000180 "ProcessProfile" ;
                 obo:IAO_0000112 "On a somewhat higher level of complexity are what we shall call rate process profiles, which are the targets of selective abstraction focused not on determinate quality magnitudes plotted over time, but rather on certain ratios between these magnitudes and elapsed times. A speed process profile, for example, is represented by a graph plotting against time the ratio of distance covered per unit of time. Since rates may change, and since such changes, too, may have rates of change, we have to deal here with a hierarchy of process profile universals at successive levels"@en ,
                                 "One important sub-family of rate process profiles is illustrated by the beat or frequency profiles of cyclical processes, illustrated by the 60 beats per minute beating process of John’s heart, or the 120 beats per minute drumming process involved in one of John’s performances in a rock band, and so on. Each such process includes what we shall call a beat process profile instance as part, a subtype of rate process profile in which the salient ratio is not distance covered but rather number of beat cycles per unit of time. Each beat process profile instance instantiates the determinable universal beat process profile. But it also instantiates multiple more specialized universals at lower levels of generality, selected from   rate process profilebeat process profileregular beat process profile3 bpm beat process profile4 bpm beat process profileirregular beat process profileincreasing beat process profileand so on.In the case of a regular beat process profile, a rate can be assigned in the simplest possible fashion by dividing the number of cycles by the length of the temporal region occupied by the beating process profile as a whole. Irregular process profiles of this sort, for example as identified in the clinic, or in the readings on an aircraft instrument panel, are often of diagnostic significance."@en ,
                                 "The simplest type of process profiles are what we shall call ‘quality process profiles’, which are the process profiles which serve as the foci of the sort of selective abstraction that is involved when measurements are made of changes in single qualities, as illustrated, for example, by process profiles of mass, temperature, aortic pressure, and so on."@en ;
@@ -1773,8 +1689,6 @@ obo:BFO_0000144 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000145
 obo:BFO_0000145 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000019 ;
-                obo:BFO_0000179 "r-quality" ;
-                obo:BFO_0000180 "RelationalQuality" ;
                 obo:IAO_0000112 "John’s role of husband to Mary is dependent on Mary’s role of wife to John, and both are dependent on the object aggregate comprising John and Mary as member parts joined together through the relational quality of being married."@en ,
                                 "a marriage bond, an instance of love, an obligation between one person and another."@en ,
                                 "a marriage bond, an instance of requited love, an obligation between one person and another."@en ;
@@ -1785,8 +1699,6 @@ obo:BFO_0000145 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000148
 obo:BFO_0000148 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000008 ;
-                obo:BFO_0000179 "0d-t-region" ;
-                obo:BFO_0000180 "ZeroDimensionalTemporalRegion" ;
                 obo:IAO_0000112 "a temporal region that is occupied by a process boundary"@en ,
                                 "right now"@en ,
                                 "the moment at which a child is born"@en ,
@@ -1799,8 +1711,6 @@ obo:BFO_0000148 rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/BFO_0000182
 obo:BFO_0000182 rdf:type owl:Class ;
                 rdfs:subClassOf obo:BFO_0000015 ;
-                obo:BFO_0000179 "history" ;
-                obo:BFO_0000180 "History" ;
                 rdfs:isDefinedBy obo:bfo.owl ;
                 rdfs:label "history"@en .
 
@@ -2074,7 +1984,7 @@ obo:MF_0000003 rdf:type owl:Class ;
                obo:IAO_0000115 """State of active attention by high sensory awareness such as being watchful and prompt to meet danger or emergency, or being quick to perceive and act.
 
  http://en.wikipedia.org/wiki/Alertness""" ;
-               rdfs:label "alertness"@en .
+               rdfs:label "process of alertness"@en .
 
 
 ###  http://purl.obolibrary.org/obo/MF_0000004
@@ -2158,7 +2068,7 @@ obo:MF_0000015 rdf:type owl:Class ;
                rdfs:subClassOf obo:MF_0000020 ;
                obo:IAO_0000115 "A mental process that manipulates mental images and words that go beyond mere memory and thoughts about the objects and entities that the person has encountered, to visualise or consider entities and states of affairs that the person has never encountered and which may not yet exist or obtain in the world. Imagination is the capacity to produce images, ideas and sensations in the mind without any immediate input of the senses." ;
                obo:IAO_0000119 "https://en.wikipedia.org/wiki/Imagination" ;
-               rdfs:label "imagination"@en .
+               rdfs:label "imagining"@en .
 
 
 ###  http://purl.obolibrary.org/obo/MF_0000017
@@ -2360,7 +2270,7 @@ obo:MF_0000060 rdf:type owl:Class ;
 
 
 http://en.wikipedia.org/wiki/Vigilance_%28psychology%29""" ;
-               rdfs:label "vigilance"@en .
+               rdfs:label "process of vigilance"@en .
 
 
 ###  http://purl.obolibrary.org/obo/MF_0000063
@@ -2502,146 +2412,6 @@ obo:MF_0000203 rdf:type owl:Class ;
                rdfs:label "personality trait"@en .
 
 
-###  http://purl.obolibrary.org/obo/NPT_0010002
-obo:NPT_0010002 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010025 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012001
-                                ] ;
-                obo:IAO_0000115 "An assay that measures one or more aspects of an evaluant's cognitive functioning."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive functioning assay"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010025
-obo:NPT_0010025 rdf:type owl:Class ;
-                rdfs:subClassOf obo:OBI_0000070 ;
-                obo:IAO_0000115 "An assay that measures one or more aspects of an evaluant's mental functioning."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "mental functioning assay"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010026
-obo:NPT_0010026 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010025 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000051 ;
-                                  owl:someValuesFrom obo:NPT_0010029
-                                ] ;
-                obo:IAO_0000115 "An assay that measures one or more aspects of an evaluant's emotional functioning."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "emotional functioning assay"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010029
-obo:NPT_0010029 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012032
-                                ] ;
-                obo:IAO_0000115 "A mental process that realizes one or more emotional functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "emotional process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010030
-obo:NPT_0010030 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012027
-                                ] ;
-                obo:IAO_0000115 "A cognitive process that realizes one or more forgetting functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "forgetting cognitive process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010033
-obo:NPT_0010033 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012030
-                                ] ;
-                obo:IAO_0000115 "A cognitive process that realizes one or more cognitive orientation functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive orientation process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010036
-obo:NPT_0010036 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012081
-                                ] ;
-                obo:IAO_0000115 "A cognitive process that realizes one or more attention cognitive functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "attention cognitive process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010037
-obo:NPT_0010037 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012036
-                                ] ;
-                obo:IAO_0000115 "A cognitive process that realizes one or more expressive functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "expressive cognitive process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010078
-obo:NPT_0010078 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010033 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012078
-                                ] ;
-                obo:IAO_0000115 "A cognitive orientation process that realizes one or more temporal cognitive orientation functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "temporal cognitive orientation process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010079
-obo:NPT_0010079 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010033 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012079
-                                ] ;
-                obo:IAO_0000115 "A cognitive orientation process that realizes one or more spatial cognitive orientation functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "spatial cognitive orientation process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010080
-obo:NPT_0010080 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010033 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012080
-                                ] ;
-                obo:IAO_0000115 "A cognitive orientation process that realizes one or more personal cognitive orientation functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "personal cognitive orientation process"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0010081
-obo:NPT_0010081 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000008 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty obo:BFO_0000055 ;
-                                  owl:someValuesFrom obo:NPT_0012035
-                                ] ;
-                obo:IAO_0000115 "A cognitive process that realizes one or more executive cognitive functions."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "executive cognitive process"@en .
-
-
 ###  http://purl.obolibrary.org/obo/NPT_0012000
 obo:NPT_0012000 rdf:type owl:Class ;
                 rdfs:subClassOf obo:OBI_0000260 ;
@@ -2658,670 +2428,12 @@ obo:NPT_0012001 rdf:type owl:Class ;
                 rdfs:label "cognitive functioning assay plan"@en .
 
 
-###  http://purl.obolibrary.org/obo/NPT_0012026
-obo:NPT_0012026 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012031 ;
-                obo:IAO_0000115 """A mental function that is manifested through the cognitive activity of a thinking entity.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000116 "NOTE: According to the Lezak text, subclasses of cognitive functions are divided into those that mediate verbal/symbolic information and those that deal with information that cannot be communicated in words or symbols (e.g. complex visual or sound patterns)."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012027
-obo:NPT_0012027 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, is the means through which previously stored information is lost by a thinking being."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "forgetting cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012028
-obo:NPT_0012028 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012036 ;
-                obo:IAO_0000115 """An expressive cognitive function that is manifested through a linguistic process as part of some linguistic cognitive activity of a thinking entity.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "linguistic cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012029
-obo:NPT_0012029 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 """A cognitive function that is manifested through the visual/spatial cognitive activity of a thinking entity.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "visual/spatial cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012030
-obo:NPT_0012030 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 """A cognitive function that is manifested through the cognitive activity of a thinking entity with regard to that entity's orientation to time, place, or self.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive orientation function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012031
-obo:NPT_0012031 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012068 ;
-                obo:IAO_0000115 """A function that is manifested through the mental activity of a thinking entity.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000116 """The Mental Functioning Ontology (MF) does not currently attempt to define 'mental function'.  Once MF has created a strong candidate definition, we will import their term to replace our own since our intention is to create an ontology that is capable of interoperability with existing ontologies.
-
-Alexander P. Cox"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000232 "TO DO: Add external references to MF and GO terms." ;
-                rdfs:label "mental function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012032
-obo:NPT_0012032 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012031 ;
-                obo:IAO_0000111 "emotional function" ;
-                obo:IAO_0000112 "The functions that are realized in the process of a person becoming happy, sad, depressed, etc." ;
-                obo:IAO_0000115 """A mental function that is manifested through the emotional activity of an entity.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:comment "This class was created to provide preliminary justification for making 'cognitive function' a subclass of 'mental function' instead of collapsing the two classes into one class."@en ;
-                rdfs:label "emotional function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012033
-obo:NPT_0012033 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, is the means through which the abilities to select, acquire, classify, and integrate information are realized."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "receptive cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012034
-obo:NPT_0012034 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, is the means through which information is stored or retrieved by a thinking being."@en ;
-                obo:IAO_0000116 "As many as 134 named types of memory have been proposed."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Memory:
-
-In psychology, memory is the processes by which information is encoded, stored, and retrieved.  Encoding allows information that is from the outside world to reach our senses in the forms of chemical and physical stimuli.  In this first stage we must change the information so that we may put the memory into the encoding process.  Storage is the second memory stage or process.  This entails that we maintain information over periods of time.  Finally the third process is retrieval.  This is the retrieval of information that we have stored. We must locate it and return it to our consciousness.  Some retrieval attempts may be effortless due to the type of information.
-
-From an information processing perspective there are three main stages in the formation and retrieval of memory:
-
-1. Encoding or registration (receiving, processing and combining of received information)
-2. Storage (creation of a permanent record of the encoded information)
-3. Retrieval, recall or recollection (calling back the stored information in response to some cue for use in a process or activity)
-"""@en ;
-                rdfs:label "memory/learning cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012035
-obo:NPT_0012035 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, involves the mental organization or reorganization of of information. Thinking functions are realized in any mental operation that relates 2 or more bits of information either implicitly or explicitly and includes such functions as computation, reasoning and judgment, concept formation, abstracting and generalizing, ordering, organizing, planning, and problem solving. Categories of thinking are divided according to the type of information being manipulated and the operation (e.g. verbal reasoning) being performed on that information."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "executive cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012036
-obo:NPT_0012036 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, is the means through which information is communicated or acted upon. The expressive functions make up the sum of observable behavior and are the means through which mental activity is inferred. Expressive functions include speaking, drawing or writing, manipulating objects, physical gestures, and facial expressions or gestures. Common problems with expressive functions include apraxia, constructional disorders, and aphasia and dysphasia."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "expressive cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012037
-obo:NPT_0012037 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012033 ;
-                obo:IAO_0000115 "A receptive cognitive function which, when realized, involves an arousal process that triggers central registration leading to analysis, encoding, and integrative activities. Sensory functions include sight, hearing, touch, taste, and smell and may also include movement, space, balance, and effort."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment "See: http://en.wikipedia.org/wiki/Sensory_Reception"@en ;
-                rdfs:label "sensory reception cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012038
-obo:NPT_0012038 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012033 ;
-                obo:IAO_0000115 "A receptive cognitive function which, when realized, involves active processing of sensations as well as their inhibition or filtering from consciousness. Perception functions include awareness, recognition, discrimination, patterning, and orientation"@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Perception:
-
-Perception is the organization, identification, and interpretation of sensory information in order to fabricate a mental representation through the process of transduction, which sensors in the body transform signals from the environment into encoded neural signals.  All perception involves signals in the nervous system, which in turn result from physical stimulation of the sense organs."""@en ;
-                rdfs:label "perception cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012039
-obo:NPT_0012039 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012034 ;
-                obo:IAO_0000115 "A memory/learning cognitive function which, when realized, involves a conscious and intentional recollection process."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Declarative_memory:
-
-Declarative memory (sometimes referred to as explicit memory) is one of two types of long term human memory.  It refers to memories which can be consciously recalled such as facts and knowledge.  Its counterpart is known as non-declarative or Procedural memory, which refers to unconscious memories such as skills (e.g. learning to ride a bicycle).  Declarative memory can be divided into two categories: episodic memory which stores specific personal experiences and semantic memory which stores factual information.
-
-There are two types of declarative memory.  Semantic memories are those that store general factual knowledge that is independent of personal experience.  Examples include types of food, capital cities, lexical knowledge (vocabulary), etc.  Episodic memories are those that store specific events such as attending a class or flying to France. Retrieval of these memories can be thought of as mentally reliving the past events they concern.  Episodic memory is believed to be the system that provides the basic support for semantic memory.
-
-From http://en.wikipedia.org/wiki/Explicit_memory:
-
-Explicit memory is the conscious, intentional recollection of previous experiences and information.  People use explicit memory throughout the day, such as remembering the time of an appointment or recollecting an event from years ago.  Explicit memory involves conscious recollection, compared with implicit memory which is an unconscious, unintentional form of memory.  Remembering a specific driving lesson is an example of explicit memory, while improved driving skill as a result of the lesson is an example of implicit memory."""@en ;
-                rdfs:label "declarative memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012040
-obo:NPT_0012040 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves holding large amounts of incoming information briefly in sensory store and is a selecting and recording process through which perceptions enter the memory system."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                obo:IAO_0000232 """***TO DO***
-
-Possibly make this a subclass of 'memory processing function'.""" ;
-                rdfs:comment """Is this the same as working memory?
-
-From http://en.wikipedia.org/wiki/Working_memory:
-
-Working memory has been defined as the system which actively holds information in the mind to do verbal and nonverbal tasks such as reasoning and comprehension, and to make it available for further information processing.  Working memory tasks are those that require the goal-oriented active monitoring or manipulation of information or behaviors in the face of interfering processes and distractions.  Working memory can only retain a limited amount of information; however, its capacity can be increased by use of a method known as chunking.  The cognitive processes involved include the executive and attention control of short-term memory which provide for the interim integration, processing, disposal, and retrieval of information.  These processes are sensitive to age; working memory is associated with cognitive development and research shows that its capacity tends to decline with old age.  Working memory is a theoretical concept central both to cognitive psychology and neuroscience.  In addition, studies done on a neurobiological basis have proven that working memory can be linked to learning and attention.
-
-Theories exist both regarding the theoretical structure of working memory and the role of specific parts of the brain involved in working memory.  Research identifies the frontal cortex, parietal cortex, anterior cingulate, and parts of the basal ganglia as crucial.  The neural basis of working memory has been derived from lesion experiments in animals and functional imaging upon humans."""@en ;
-                rdfs:label "registration memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012041
-obo:NPT_0012041 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage and retrieval of information for XXX days."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Short-term_memory:
-
-Short-term memory (or \"primary\" or \"active memory\") is the capacity for holding a small amount of information in mind in an active, readily available state for a short period of time.  The duration of short-term memory (when rehearsal or active maintenance is prevented) is believed to be in the order of seconds.  A commonly cited capacity is 7 ± 2 elements.  In contrast, long-term memory indefinitely stores a seemingly unlimited amount of information.  Short-term memory should be distinguished from working memory, which refers to structures and processes used for temporarily storing and manipulating information.
-
-See also: http://en.wikipedia.org/wiki/Working_memory"""@en ;
-                rdfs:label "short term memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012042
-obo:NPT_0012042 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012041 ;
-                obo:IAO_0000115 "A short term memory cognitive function which, when realized, is the first stage of short term memory storage, which temporarily holds information gathered via the registration or sensory memory function."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment "NOTE: http://en.wikipedia.org/wiki/Immediate_memory redirects to working memory."@en ;
-                rdfs:label "immediate memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012043
-obo:NPT_0012043 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012041 ;
-                obo:IAO_0000115 "A short term memory cognitive function which is realized through any repetitive process that serves to lengthen the duration of a memory trace."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Memory_rehearsal:
-
-Memory rehearsal is a term for the role of repetition in the retention of memories, e.g., working memory rehearsal tasks."""@en ;
-                rdfs:label "rehearsal memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012044
-obo:NPT_0012044 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012041 ;
-                obo:IAO_0000115 "A short term memory cognitive function which, when realized, results in short term information storage that lasts longer than information acquired through the immediate memory function by up to 2 days."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "medium term memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012045
-obo:NPT_0012045 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, results in the acquisition, storage, and consolidation of new information that lasts longer than short term memory."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Long-term_memory:
-
-Long-term memory (LTM) is memory in which associations among items are stored, as part of the theory of a dual-store memory model.  According to the theory, long-term memory differs structurally and functionally from working memory or short-term memory, which ostensibly stores items for only around 20–30 seconds and can be recalled easily.  This differs from the theory of the single-store retrieved context model that has no differentiation between short-term and long-term memory."""@en ;
-                rdfs:label "long term memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012046
-obo:NPT_0012046 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012045 ;
-                obo:IAO_0000115 "A long term memory cognitive function which, when realized, involves acquiring information without direct effort."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Incidental_learning:
-
-Latent learning is a form of learning that is not immediately expressed in an overt response; it occurs without obvious reinforcement to be applied later.  Latent learning is when an organism learns a new concept in its life, however, the knowledge is not immediately expressed.  Instead, it remains dormant, and may not be available to consciousness, until specific events/experiences might need this knowledge to be demonstrated.  For instance a child may observe a parent setting the table or tightening a screw, but does not act on this learning for a year; then he finds out later on that he knows how to do these."""@en ;
-                rdfs:label "incidental learning cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012047
-obo:NPT_0012047 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012045 ;
-                obo:IAO_0000115 "A long term memory cognitive function which, when realized, involves the acquisition and storage of autobiographical memories."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Autobiographical_memory:
-
-Autobiographical memory is a memory system consisting of episodes recollected from an individual's life, based on a combination of episodic (personal experiences and specific objects, people and events experienced at particular time and place) and semantic (general knowledge and facts about the world) memory."""@en ;
-                rdfs:label "autobiographical memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012048
-obo:NPT_0012048 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012047 ;
-                obo:IAO_0000115 "A autobiographical memory cognitive function which, when realized, involves the acquisition of and storage of autobiographical memories from recent events."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "recent autobiographical memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012049
-obo:NPT_0012049 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012047 ;
-                obo:IAO_0000115 "A autobiographical memory cognitive function which, when realized, involves the acquisition of and storage of autobiographical memories from long past events."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "remote autobiographical memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012050
-obo:NPT_0012050 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves retrieving stored information."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "remembering cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012051
-obo:NPT_0012051 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012050 ;
-                obo:IAO_0000115 "A remembering cognitive function which, when realized, involves retrieving stored information through an active complex search process."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Recollection:
-
-Recall in memory refers to the retrieval of events or information from the past.  Along with encoding and storage, it is one of the three core processes of memory. There are three main types of recall: free recall, cued recall and serial recall.  Psychologists test these forms of recall as a way to study the memory processes of humans and animals.  Two main theories of the process of recall are the Two-Stage Theory and the theory of Encoding Specificity.
-
-The Austin Simonson theory states that the process of recall begins with a search and retrieval process, and then a decision or recognition process where the correct information is chosen from what has been retrieved.  In this theory, recognition only involves the latter of these two stages, or processes, and this is thought to account for the superiority of the recognition process over recall.  Recognition only involves one process in which error or failure may occur, while recall involves two.  However, recall has been found to be superior to recognition in some cases, such as a failure to recognize words that can later be recalled.
-
-The theory of encoding specificity finds similarities between the process of recognition and that of recall.  The encoding specificity principle states that memory utilizes information from the memory trace, or the situation in which it was learned, and from the environment in which it is retrieved.  Encoding specificity helps to take into account context cues because of its focus on the retrieval environment, and it also accounts for the fact recognition may not always be superior to recall.
-
-See also: http://en.wikipedia.org/wiki/Recall_%28memory%29"""@en ;
-                rdfs:label "recall memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012052
-obo:NPT_0012052 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012050 ;
-                obo:IAO_0000115 "A remembering cognitive function which, when realized, involves retrieving stored information when a stimulus triggers awareness."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Recognition_memory:
-
-Recognition memory is a subcategory of declarative memory.  Essentially, recognition memory is the ability to recognize previously encountered events, objects, or people. When the previously experienced event is reexperienced, this environmental content is matched to stored memory representations, eliciting matching signals.  Recognition memory can be subdivided into two component processes: recollection and familiarity, sometimes referred to as \"remembering\" and \"knowing\", respectively.  Recollection is the retrieval of details associated with the previously experienced event.  In contrast, familiarity is the feeling that the event was previously experienced, without recollection.  Thus, the fundamental distinction between the two processes is that recollection is a slow, controlled search process, whereas familiarity is a fast, automatic process.
-
-Mandler's \"Butcher-on-the-bus\" example:
-
-Imagine taking a seat on a crowded bus.  You look to your left and notice a man.  Immediately, you are overcome with this sense that you've seen this man before, but you cannot remember who he is.  This automatically elicited feeling is familiarity. While trying to remember who this man is, you begin retrieving specific details about your previous encounter.  For example, you might remember that this man handed you a fine chop of meat in the grocery store.  Or perhaps you remember him wearing an apron.  This search process is recollection."""@en ;
-                rdfs:label "recognition memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012053
-obo:NPT_0012053 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage or retrieval of information of a specific type."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "material specific memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012054
-obo:NPT_0012054 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012053 ;
-                obo:IAO_0000115 "A material specific memory cognitive function which, when realized, involves the storage or retrieval of verbal information."@en ;
-                obo:IAO_0000116 "Explain what \"verbal inforamtion\" is. MPJ"@en ,
-                                """From http://en.wikipedia.org/wiki/Verbal_memory:
-
-Verbal memory is a term used in cognitive psychology that refers to memory of words and other abstractions involving language."""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "verbal memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012055
-obo:NPT_0012055 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012053 ;
-                obo:IAO_0000115 "A material specific memory cognitive function which, when realized, involves the storage or retrieval of nonverbal information."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "nonverbal memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012056
-obo:NPT_0012056 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012053 ;
-                obo:IAO_0000115 "A material specific memory cognitive function which, when realized, involves the storage or retrieval of information necessary for executing motor skills."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Motor_skill:
-
-A motor skill is a learned sequence of movements that combine to produce a smooth, efficient action in order to master a particular task.  The development of motor skill occurs in the motor cortex, the region of the cerebral cortex that controls voluntary muscle groups.  The stages to motor learning is the cognitive phase, the associative phase, and the autonomous phase.
-
-Cognitive Phase: When a learner is new to a specific task, the primary thought process starts with, “what needs to be done?”  Considerable cognitive activity is required so that the learner can determine appropriate strategies to adequately reflect the desired goal.  Good strategies are retained and inefficient strategies are discarded.  The performance is greatly improved in a short amount of time.
-
-Associative Phase: the learner has determined the most effective way to do the task and starts to make subtle adjustments in performance.  Improvements are more gradual and movements become more consistent.  This phase can last for a long time.
-
-Autonomous Phase: this phase may take several months to years to reach.  The phase is dubbed because the performer can now “automatically” complete the task without having to pay any attention to it.  Examples include walking and talking or sight reading while doing simple arithmetic."""@en ;
-                rdfs:label "motor skill learning cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012057
-obo:NPT_0012057 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage or retrieval of information that is accessed through a specific sensory modality of testing [e.g. sight, hearing, touch, taste, or smell]."@en ;
-                obo:IAO_0000116 "Consider subtypes for each modality? MPJ"@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Modality_%28semiotics%29:
-
-In semiotics, a modality is a particular way in which the information is to be encoded for presentation to humans, i.e. to the type of sign and to the status of reality ascribed to or claimed by a sign, text or genre."""@en ;
-                rdfs:label "modality specific memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012058
-obo:NPT_0012058 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage or retrieval of memories of one's own experiences. Episodic memory is contrasted with semantic memory."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                obo:IAO_0000232 """NOTE: This should probably be combined with the 'autobiographical memory function'.
-
-WARNING: There is a potential conflict with the alternative term 'declarative memory function' for this class and its superclass with the same name!!!
-
-NOTE: This is NOT the same thing as working memory.""" ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Explicit_memory:
-
-Episodic memory, a part of autobiographical memory, consists of the recollection of events in the life of a person.  These can be memories that happened to the person directly or just be memories of events that happened around them.  Simply put, it is the memory of life experiences centered on oneself.  Episodic memory is necessary for \"time traveling\": remembering your past.  Episodic memory does not have any direct affect on how one imagines their future.  It is considered a uniquely human quality that depends on maturation and therefore won't be found in babies and young children.  For children, recollection of these memories can also be hindered by traumatic events that occur during childhood.
-
-From http://en.wikipedia.org/wiki/Episodic_memory:
-
-Episodic memory is the memory of autobiographical events (times, places, associated emotions, and other contextual knowledge) that can be explicitly stated.  Semantic and episodic memory together make up the category of declarative memory, which is one of the two major divisions in memory.  Events that are recorded into episodic memory may trigger episodic learning, i.e. a change in behavior that occurs as a result of an event.  For example, a fear of dogs that follows being bitten by a dog is episodic learning.  One of the main components of episodic memory is the process of recollection."""@en ;
-                rdfs:label "episodic memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012059
-obo:NPT_0012059 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage or retrieval of the sorts of information that is learned as knowledge. Semantic memory is contrasted with episodic memory."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Explicit_memory:
-
-Semantic memory consists of all explicit memory that is not autobiographical.  Examples of semantic memory is knowledge of historical events and figures; the ability to recognize friends and acquaintances; and information learned in school, such as specialized vocabularies and reading, writing and mathematics.
-
-From http://en.wikipedia.org/wiki/Semantic_memory:
-
-Semantic memory refers to the memory of meanings, understandings, and other concept-based knowledge unrelated to specific experiences.  The conscious recollection of factual information and general knowledge about the world is generally thought to be independent of context and personal relevance.  Semantic and episodic memory together make up the category of declarative memory, which is one of the two major divisions in memory.  With the use of our semantic memory we can give meaning to otherwise meaningless words and sentences.  We can learn about new concepts by applying our knowledge learned from things in the past.  Semantic memory includes generalized knowledge that does not involve memory of a specific event.  For instance, people can answer questions like \"Are wrenches pets or tools?\" without remembering any specific event in which they learned that wrenches are tools."""@en ;
-                rdfs:label "semantic memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012060
-obo:NPT_0012060 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the passive storage or retrieval of information. Automatic memory cognitive function is contrasted with effortful memory cognitive function."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "automatic memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012061
-obo:NPT_0012061 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves effortful processing of information for storage or retrieval. Effortful memory function is contrasted with automatic memory function."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "effortful memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012062
-obo:NPT_0012062 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves the storage or retrieval of information about when or where another piece of information was learned."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:label "source memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012063
-obo:NPT_0012063 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012039 ;
-                obo:IAO_0000115 "A declarative memory cognitive function which, when realized, involves remembering to do something at a specific time."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Prospective_memory:
-
-Prospective memory is a form of memory that involves remembering to perform a planned action or intention at the appropriate time.  Prospective memory tasks are highly prevalent in daily life and range from relatively simple tasks to extreme life-or-death situations.  Examples of simple tasks include remembering to put the toothpaste cap back on, remembering to reply to an email or remembering to return a rented movie.  Examples of highly important situations include a patient remembering to take medication or a pilot remembering to perform specific safety procedures during a flight.
-
-In contrast to prospective memory, retrospective memory involves memory of people, events and words that have been encountered in the past.  Prospective memory and retrospective memory differ in the fact that retrospective memory emphasizes memory for events that have previously occurred, while prospective memory focuses on intended future events and is thus considered a form of memory for the future.  Retrospective memory involves the memory of what we know, containing informational content; prospective memory focuses on when to act, without focusing on informational content.  There is some evidence demonstrating the role of retrospective memory in the proper performance of prospective memory, but this role seems to be relatively small."""@en ;
-                rdfs:label "prospective memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012064
-obo:NPT_0012064 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012034 ;
-                obo:IAO_0000115 "A memory/learning cognitive function which, when realized, involves the storage or retrieval of information that is expressed without the subject's phenomenal awareness that they possess it."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Implicit_memory:
-
-Implicit memory is a type of memory in which previous experiences aid in the performance of a task without conscious awareness of these previous experiences.  Evidence for implicit memory arises in priming, a process whereby subjects are measured by how they have improved their performance on tasks for which they have been subconsciously prepared.  Implicit memory also leads to the illusion-of-truth effect, which suggests that subjects are more likely to rate as true those statements that they have already heard, regardless of their veracity.  In daily life, people rely on implicit memory every day in the form of procedural memory, the type of memory that allows people to remember how to tie their shoes or ride a bicycle without consciously thinking about these activities.  Research into implicit memory indicates that it operates through a different mental process from explicit memory."""@en ;
-                rdfs:label "nondeclarative memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012065
-obo:NPT_0012065 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012064 ;
-                obo:IAO_0000115 "A nondeclarative memory cognitive function which, when realized, involves motor and cognitive skill learning and perceptual \"how to\" learning."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ;
-                rdfs:comment """From http://en.wikipedia.org/wiki/Procedural_memory:
-
-Procedural memory is memory for how to do things.  Procedural memory guides the processes we perform and most frequently resides below the level of conscious awareness.  When needed, procedural memories are automatically retrieved and utilized for the execution of the integrated procedures involved in both cognitive and motor skills; from tying shoes to flying an airplane to reading.  Procedural memories are accessed and used without the need for conscious control or attention.  Procedural memory is a type of long-term memory and, more specifically, a type of implicit memory.  Procedural memory is created through \"procedural learning\" or, repeating a complex activity over and over again until all of the relevant neural systems work together to automatically produce the activity.  Implicit procedural learning is essential to the development of any motor skill or cognitive activity."""@en ;
-                rdfs:label "procedural memory cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012066
-obo:NPT_0012066 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012064 ;
-                obo:IAO_0000115 """A nondeclarative memory cognitive function which, when realized, involves cued recall in which, without the subject's awareness, prior exposure facilitates the response.
-
-Wikipedia: Priming is an implicit memory effect in which exposure to a stimulus influences a response to a later stimulus.  It can occur following perceptual, semantic, or conceptual stimulus repetition.  For example, if a person reads a list of words including the word table, and is later asked to complete a word starting with tab, the probability that he or she will answer table is greater than if not so primed.  Another example is if people see an incomplete sketch that they are unable to identify and they are shown more of the sketch until they recognize the picture, later they will identify the sketch at an earlier stage than was possible for them the first time.  The effects of priming can be very salient and long lasting, even more so than simple recognition memory.  Unconscious priming effects can affect word choice on a word-stem completion test long after the words have been consciously forgotten.  Priming works best when the two stimuli are in the same modality. For example visual priming works best with visual cues and verbal priming works best with verbal cues. But priming also occurs between modalities, or between semantically related words such as 'doctor' and 'nurse'."""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "Adapted from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed." ,
-                                "http://en.wikipedia.org/wiki/Priming_%28psychology%29" ;
-                obo:IAO_0000232 """Add positive and negative priming as subclasses:
-
-From Wikipedia: The terms positive and negative priming refer to when priming affects the speed of processing.  A positive prime speeds up processing, while a negative prime lowers the speed to slower than un-primed levels.  Positive priming is caused by simply experiencing the stimulus, while negative priming is caused by experiencing the stimulus, and then ignoring it.  Positive priming effects happen even if the prime is not consciously seen.  The effects of positive and negative priming are visible in event-related potential (ERP) readings.""" ;
-                rdfs:label "priming cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012067
-obo:NPT_0012067 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012064 ;
-                obo:IAO_0000115 """A nondeclarative memory cognitive function which, when realized, involves learning in which one stimulus, the conditioned stimulus, comes to signal the occurrence of a second stimulus, the unconditioned stimulus.  The unconditioned stimulus is a biologically significant stimulus such as food or pain that elicits a response from the start; this is called the unconditioned response. The conditioned stimulus usually elicits no particular response at first, but after conditioning it elicits the conditioned response.
-
-Classical conditioning is to be distinguished from operant or instrumental conditioning, in which behavior emitted by the organism is strengthened or weakened by its consequences (e.g. reward or punishment)."""@en ;
-                obo:IAO_0000116 "Class adoption from: Chapter 2 of Lezak, et. al. (2004) /Neuropsychological Assessment/ 4th Ed."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000119 "http://en.wikipedia.org/wiki/Classical_conditioning" ;
-                rdfs:label "classical conditioning cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012068
-obo:NPT_0012068 rdf:type owl:Class ;
-                rdfs:subClassOf obo:BFO_0000034 ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000232 "Maybe this should be called 'biological function' instead of 'bodily function'." ;
-                rdfs:label "bodily function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012069
-obo:NPT_0012069 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which the name of some stimulus entity is called to mind and communicated."@en ;
-                obo:IAO_0000116 "The naming can be communicated via speech, writing, sign language, etc."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "naming cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012070
-obo:NPT_0012070 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which a list of words is produced."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000232 "Is this a function or should it be removed?" ;
-                rdfs:label "word generation cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012071
-obo:NPT_0012071 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012070 ;
-                obo:IAO_0000115 "A word generation cognitive function which, when realized, is the means through which a list of words that belong to a common semantic category is produced."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "linguistic category fluency cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012072
-obo:NPT_0012072 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012070 ;
-                obo:IAO_0000115 "A word generation cognitive function which, when realized, is the means through which a list of words that begin with a common letter is produced."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "linguistic letter fluency cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012073
-obo:NPT_0012073 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which words or sounds are mimicked."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "language repetition cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012074
-obo:NPT_0012074 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which information is communicated through the articulation of words or sounds."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "speech production cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012075
-obo:NPT_0012075 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which written or spoken information is understood."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "language comprehension cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012076
-obo:NPT_0012076 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which information is acquired through reading meaningful letters or characters."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000232 "Consider making this a subclass of 'language comprehension cognitive function' and add 'listening cognitive function' as a sister class to it." ;
-                rdfs:label "reading cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012077
-obo:NPT_0012077 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012028 ;
-                obo:IAO_0000115 "A linguistic cognitive function which, when realized, is the means through which information is communicated by producing meaningful letters or characters that constitute readable matter."@en ;
-                obo:IAO_0000116 "Consider adding 'drawing cognitive function'"@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "writing cognitive function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012078
-obo:NPT_0012078 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012030 ;
-                obo:IAO_0000115 "A cognitive orientation function which, when realized, is the means through which orientation to time (such as the current time of day, date, day of the week, season, month, or year) occurs."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "temporal cognitive orientation function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012079
-obo:NPT_0012079 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012030 ;
-                obo:IAO_0000115 "A cognitive orientation function which, when realized, is the means through which orientation to one's place (such as one's current location, place of residence, city, state, building, or floor) occurs."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "spatial cognitive orientation function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012080
-obo:NPT_0012080 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012030 ;
-                obo:IAO_0000115 "A cognitive orientation function which, when realized, is the means through which orientation to one's self (such as one's name, age, previous occupation, and identities of relatives) occurs."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "personal cognitive orientation function"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0012081
-obo:NPT_0012081 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0012026 ;
-                obo:IAO_0000115 "A cognitive function which, when realized, results in a thinking entity maintaining continued cognitive focus on a specific entity."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                obo:IAO_0000232 "Should this be made a subclass of executive cognitive function?" ;
-                rdfs:label "attention cognitive function"@en .
-
-
 ###  http://purl.obolibrary.org/obo/NPT_0012082
 obo:NPT_0012082 rdf:type owl:Class ;
                 rdfs:subClassOf obo:NPT_0012000 ;
                 obo:IAO_0000115 "An assay plan to produce information about some evaluant's level of mental functioning that is the concretization of an assay design and inheres in a bearer who is committed to realizing it as a mental functioning assay."@en ;
                 obo:IAO_0000117 "Alexander P. Cox"@en ;
                 rdfs:label "mental functioning assay plan"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0013001
-obo:NPT_0013001 rdf:type owl:Class ;
-                rdfs:subClassOf obo:MF_0000075 ;
-                obo:IAO_0000115 """A quality of a single physical entity inhering in a bearer by virtue of the bearer's cognitive capacities as demonstrated by the bearer's responses to cognitive tasks or other situational stimuli.
-
-*** REVIEW ***"""@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive quality"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0022018
-obo:NPT_0022018 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010002 ;
-                obo:IAO_0000115 "A cognitive functioning assay that is designed to assess the evaluant's cognitive orientation capacities."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "cognitive orientation assay"@en .
-
-
-###  http://purl.obolibrary.org/obo/NPT_0022023
-obo:NPT_0022023 rdf:type owl:Class ;
-                rdfs:subClassOf obo:NPT_0010002 ;
-                obo:IAO_0000115 "A cognitive functioning assay that is designed to assess the evaluant's capacities for language use and comprehension."@en ;
-                obo:IAO_0000117 "Alexander P. Cox"@en ;
-                rdfs:label "language assay"@en .
 
 
 ###  http://purl.obolibrary.org/obo/OBI_0000011
@@ -3612,15 +2724,6 @@ obo:OBI_0500028 rdf:type owl:Class ;
                 obo:IAO_0000117 "Person: Philippe Rocca-Serra"@en ;
                 obo:IAO_0000119 "Adapted from Clinical Research Glossary Version 4.0 CDICS glossary group"@en ;
                 rdfs:label "exclusion criterion"@en .
-
-
-###  http://purl.obolibrary.org/obo/OGMS_0000023
-obo:OGMS_0000023 rdf:type owl:Class ;
-                 rdfs:subClassOf obo:BFO_0000019 ;
-                 obo:IAO_0000111 "phenotype" ;
-                 obo:IAO_0000115 "A (combination of) quality(ies) of an organism determined by the interaction of its genetic make-up and environment that differentiates specific instances of a species from other instances of the same species."@en ;
-                 obo:IAO_0000412 obo:ogms.owl ;
-                 rdfs:label "phenotype" .
 
 
 ###  http://purl.obolibrary.org/obo/OGMS_0000060
@@ -4060,21 +3163,6 @@ obo:OMRSE_00002049 rdf:type owl:Class ;
                    rdfs:label "graduate higher education program"@en .
 
 
-###  http://purl.obolibrary.org/obo/OMRSE_00002058
-obo:OMRSE_00002058 rdf:type owl:Class ;
-                   rdfs:subClassOf obo:BFO_0000016 ;
-                   obo:IAO_0000111 "language literacy competence"@en ;
-                   obo:IAO_0000115 "A disposition borne by a human being that (1) has a linguistic competence as a dispositional part and (2) if realized, is realized by the bearer's achievement of some personal goal."@en ;
-                   obo:IAO_0000117 "William R. Hogan"@en ;
-                   dc:contributor "Jiang Bian"@en ,
-                                  "Xi Yang"@en ,
-                                  "Yonghui Wu"@en ;
-                   rdfs:comment "Other dispositions that it can and likely does have as dispositional parts include cultural competencies, interpersonal competencies, competencies for navigating a society's systems of laws, claims, obligations, deontic declarations, and norms of financial and other economic exchange."@en ,
-                                "The realization of this disposition by definition realizes the bearer's linguistic competence that is a dispositional part of this disposition.  The realization of the linguistic competence would be an occurrent part of the realization of this disposition (and not a temporal part)."@en ,
-                                "Whereas linguistic competence may be afforded to non-human agents, literacy is nearly always considered in the context of human beings."@en ;
-                   rdfs:label "linguistic literacy competence"@en .
-
-
 ###  http://purl.obolibrary.org/obo/OMRSE_00002060
 obo:OMRSE_00002060 rdf:type owl:Class ;
                    rdfs:subClassOf obo:BFO_0000145 ;
@@ -4085,22 +3173,6 @@ obo:OMRSE_00002060 rdf:type owl:Class ;
                                   "William R. Hogan"@en ;
                    rdfs:comment "We are also intending on including other family arrangements. This is something we are working on."@en ;
                    rdfs:label "family relationship"@en .
-
-
-###  http://purl.obolibrary.org/obo/OMRSE_00002066
-obo:OMRSE_00002066 rdf:type owl:Class ;
-                   rdfs:subClassOf obo:BFO_0000016 ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty obo:RO_0000052 ;
-                                     owl:someValuesFrom obo:BFO_0000040
-                                   ] ;
-                   obo:IAO_0000115 "A disposition that inheres in some material entity and is such that that, if realized, it is realized by either some linguistic concretization-utilization process or some linguistic concretization-interpretation process."@en ;
-                   obo:IAO_0000117 "S. Clint Dowland"@en ;
-                   dc:contributor "Mathias Brochhausen"@en ,
-                                  "Matthew Diller"@en ,
-                                  "William R. Hogan"@en ;
-                   rdfs:comment "When realized in a concretization-utilization process, the only relevant concretization may in some cases be a cognitive one, but that suffices to realize a linguistic competence. For example, suppose one begins to write a letter, planning out the words ahead of time, but is interrupted before beginning to write and never resumes. During the process of planning out the words and what one intends to communicate, one is already concretizing words cognitively, as well as considering which combinations of words one can use to concretize additional generically dependent continuants. In doing so, one performs processes that realize one's linguistic competence, without producing any concretizations other than those cognitive ones."@en ;
-                   rdfs:label "linguistic competence"@en .
 
 
 ###  http://purl.obolibrary.org/obo/OOSTT_00000074
@@ -4547,7 +3619,7 @@ obo:STEMIO_0001543 rdf:type owl:Class ;
 obo:STEMIO_0001544 rdf:type owl:Class ;
                    rdfs:subClassOf obo:MF_0000033 ;
                    dc:creator "John Beverley"^^xsd:string ;
-                   CommonCoreOntologies:alternative_label "Mental disposition inhering in an organism which if realized, is realized in persistent desturbances in the stability of one's view of the self."@en ;
+                   CommonCoreOntologies:alternative_label "Mental disposition inhering in an organism which if realized, is realized in persistent disturbances in the stability of one's view of the self."@en ;
                    rdfs:label "identity diffusion"@en .
 
 
@@ -4623,14 +3695,14 @@ obo:STEMIO_0001553 rdf:type owl:Class ;
 obo:STEMIO_0001555 rdf:type owl:Class ;
                    rdfs:subClassOf obo:MF_0000033 ;
                    dc:creator "John Beverley"^^xsd:string ;
-                   rdfs:label "rigorous"@en .
+                   rdfs:label "rigorousness"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001556
 obo:STEMIO_0001556 rdf:type owl:Class ;
                    rdfs:subClassOf obo:MF_0000033 ;
                    dc:creator "John Beverley"^^xsd:string ;
-                   rdfs:label "methodical"@en .
+                   rdfs:label "methodicality"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001557
@@ -4644,7 +3716,7 @@ obo:STEMIO_0001557 rdf:type owl:Class ;
 obo:STEMIO_0001558 rdf:type owl:Class ;
                    rdfs:subClassOf obo:MF_0000033 ;
                    dc:creator "John Beverley"^^xsd:string ;
-                   rdfs:label "hyperfocus"@en .
+                   rdfs:label "hypervigilance"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001700
@@ -4660,6 +3732,41 @@ obo:STEMIO_0001701 rdf:type owl:Class ;
                    rdfs:subClassOf obo:STEMIO_0001509 ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "self-esteem"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001705
+obo:STEMIO_0001705 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:BFO_0000030 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "agent"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001706
+obo:STEMIO_0001706 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:STEMIO_0001705 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "person"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001707
+obo:STEMIO_0001707 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:STEMIO_0001516 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "high school student role"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001708
+obo:STEMIO_0001708 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:MF_0000020 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "believing"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001709
+obo:STEMIO_0001709 rdf:type owl:Class ;
+                   rdfs:subClassOf obo:MF_0000020 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "wishing"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/AbbreviatedName
@@ -4687,14 +3794,6 @@ CommonCoreOntologies:ArtificialLanguage rdf:type owl:Class ;
                                         CommonCoreOntologies:definition "A Language that is developed through conscious planning and premeditation, rather than one that was developed through use and repetition."@en ;
                                         CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
                                         rdfs:label "Artificial Language"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/City
-CommonCoreOntologies:City rdf:type owl:Class ;
-                          rdfs:subClassOf CommonCoreOntologies:LocalAdministrativeRegion ;
-                          CommonCoreOntologies:definition "A Local Administrative Region in which a relatively large human population permanently resides; is designated as a city based on a particular administrative, legal, or historical status; and which delimits a local Government that typically oversees the provision of systems for sanitation, utilities, land usage, housing, and transportation."@en ;
-                          CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                          rdfs:label "City"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/CodeIdentifier
@@ -4731,14 +3830,6 @@ CommonCoreOntologies:Country rdf:type owl:Class ;
                              CommonCoreOntologies:definition "A Geopolitical Entity that delimits a Government with effective internal and external sovereignty over the region and its population, and which is not dependent on or subject to any other power or Geopolitical Entity."@en ;
                              CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
                              rdfs:label "Country"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/County
-CommonCoreOntologies:County rdf:type owl:Class ;
-                            rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ;
-                            CommonCoreOntologies:definition "A Geopolitical Entity that is part of either a First-Order or Second-Order Administrative Region."@en ;
-                            CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                            rdfs:label "County"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/DataRangeIntervalEstimateInformationContentEntity
@@ -4835,20 +3926,6 @@ CommonCoreOntologies:DistanceMeasurementInformationContentEntity rdf:type owl:Cl
                                                                  rdfs:label "Distance Measurement Information Content Entity"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/DivisonOfGeopoliticalEntity
-CommonCoreOntologies:DivisonOfGeopoliticalEntity rdf:type owl:Class ;
-                                                 rdfs:subClassOf CommonCoreOntologies:GeospatialRegion ,
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty obo:BFO_0000050 ;
-                                                                   owl:someValuesFrom CommonCoreOntologies:GeopoliticalEntity
-                                                                 ] ;
-                                                 owl:disjointWith CommonCoreOntologies:GeopoliticalEntity ;
-                                                 CommonCoreOntologies:definition "A Geospatial Region that is a fiat division of a Geopolitical Entity and not a Geopolitical Entity."@en ;
-                                                 CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                 rdfs:comment "Instances of this class are not proper geopolitical entities, but in some cases may have an organization that exercises some control over the region, such as the homeowners' association for a neighborhood."@en ;
-                                                 rdfs:label "Division of Geopolitical Entity"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/EstimateInformationContentEntity
 CommonCoreOntologies:EstimateInformationContentEntity rdf:type owl:Class ;
                                                       rdfs:subClassOf CommonCoreOntologies:MeasurementInformationContentEntity ;
@@ -4876,48 +3953,12 @@ CommonCoreOntologies:EventStatusNominalInformationContentEntity rdf:type owl:Cla
                                                                 rdfs:label "Event Status Nominal Information Content Entity"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/FirstOrderAdministrativeRegion
-CommonCoreOntologies:FirstOrderAdministrativeRegion rdf:type owl:Class ;
-                                                    rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty obo:BFO_0000050 ;
-                                                                      owl:someValuesFrom CommonCoreOntologies:Country
-                                                                    ] ;
-                                                    CommonCoreOntologies:definition "A Geopolitical Entity that is a primary administrative division of a Country."@en ;
-                                                    CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                    rdfs:label "First-Order Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/FourthOrderAdministrativeRegion
-CommonCoreOntologies:FourthOrderAdministrativeRegion rdf:type owl:Class ;
-                                                     rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty obo:BFO_0000050 ;
-                                                                       owl:someValuesFrom CommonCoreOntologies:ThirdOrderAdministrativeRegion
-                                                                     ] ;
-                                                     CommonCoreOntologies:definition "A Geopolitical Entity that is a subdivision of a Third-Order Administrative Region."@en ;
-                                                     CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                     rdfs:label "Fourth-Order Administrative Region"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity
 CommonCoreOntologies:GeopoliticalEntity rdf:type owl:Class ;
                                         rdfs:subClassOf CommonCoreOntologies:GeospatialRegion ;
                                         CommonCoreOntologies:definition "A Geospatial Region that delimits the authority of a formally constituted Government to exercise its control within the bounded area."@en ;
                                         CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
                                         rdfs:label "Geopolitical Entity"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialLocation
-CommonCoreOntologies:GeospatialLocation rdf:type owl:Class ;
-                                        rdfs:subClassOf CommonCoreOntologies:GeospatialRegion ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty obo:RO_0001015 ;
-                                                          owl:someValuesFrom obo:BFO_0000001
-                                                        ] ;
-                                        CommonCoreOntologies:definition "A Geospatial Region at which an Entity or Event is located."@en ;
-                                        CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                        rdfs:label "Geospatial Location"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion
@@ -5002,15 +4043,6 @@ CommonCoreOntologies:LegalName rdf:type owl:Class ;
                                CommonCoreOntologies:definition "A Proper Name that is an official name for the designated entity as determined by a Government or court of law."@en ;
                                CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
                                rdfs:label "Legal Name"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion
-CommonCoreOntologies:LocalAdministrativeRegion rdf:type owl:Class ;
-                                               rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ;
-                                               CommonCoreOntologies:alternative_label "Locality"@en ;
-                                               CommonCoreOntologies:definition "A Geopolitical Entity that delimits a local Government."@en ;
-                                               CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                               rdfs:label "Local Administrative Region"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/MaximumOrdinalMeasurementInformationContentEntity
@@ -5228,14 +4260,6 @@ CommonCoreOntologies:ProportionalRatioMeasurementInformationContentEntity rdf:ty
                                                                           rdfs:label "Proportional Ratio Measurement Information Content Entity"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Province
-CommonCoreOntologies:Province rdf:type owl:Class ;
-                              rdfs:subClassOf CommonCoreOntologies:FirstOrderAdministrativeRegion ;
-                              CommonCoreOntologies:definition "A First-Order Administrative Region that is part of a Country and delimits the authority of a magistrate who holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the Province."@en ;
-                              CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                              rdfs:label "Province"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/RatioMeasurementInformationContentEntity
 CommonCoreOntologies:RatioMeasurementInformationContentEntity rdf:type owl:Class ;
                                                               owl:equivalentClass [ rdf:type owl:Restriction ;
@@ -5281,18 +4305,6 @@ CommonCoreOntologies:Second rdf:type owl:Class ;
                             rdfs:label "Second"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion
-CommonCoreOntologies:SecondOrderAdministrativeRegion rdf:type owl:Class ;
-                                                     rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty obo:BFO_0000050 ;
-                                                                       owl:someValuesFrom CommonCoreOntologies:FirstOrderAdministrativeRegion
-                                                                     ] ;
-                                                     CommonCoreOntologies:definition "A Geopolitical Entity that is a subdivision of a First-Order Administrative Region."@en ;
-                                                     CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                     rdfs:label "Second-Order Administrative Region"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/SequencePositionOrdinality
 CommonCoreOntologies:SequencePositionOrdinality rdf:type owl:Class ;
                                                 rdfs:subClassOf CommonCoreOntologies:OrdinalMeasurementInformationContentEntity ;
@@ -5307,15 +4319,6 @@ CommonCoreOntologies:SpatialRegionIdentifier rdf:type owl:Class ;
                                              CommonCoreOntologies:definition "A Designative Information Content Entity that designates some Spatial Region."@en ;
                                              CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
                                              rdfs:label "Spatial Region Identifier"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/State
-CommonCoreOntologies:State rdf:type owl:Class ;
-                           rdfs:subClassOf CommonCoreOntologies:FirstOrderAdministrativeRegion ;
-                           CommonCoreOntologies:alternative_label "Constituent State"@en ;
-                           CommonCoreOntologies:definition "A First-Order Administrative Region that is part of a Country and delimits a centralized regional Government that holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the State."@en ;
-                           CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                           rdfs:label "State"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Subcontinent
@@ -5338,18 +4341,6 @@ CommonCoreOntologies:TemporalRegionIdentifier rdf:type owl:Class ;
                                               rdfs:label "Temporal Region Identifier"@en .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion
-CommonCoreOntologies:ThirdOrderAdministrativeRegion rdf:type owl:Class ;
-                                                    rdfs:subClassOf CommonCoreOntologies:GeopoliticalEntity ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty obo:BFO_0000050 ;
-                                                                      owl:someValuesFrom CommonCoreOntologies:SecondOrderAdministrativeRegion
-                                                                    ] ;
-                                                    CommonCoreOntologies:definition "A Geopolitical Entity that is a subdivision of a Second-Order Administrative Region."@en ;
-                                                    CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                    rdfs:label "Third-Order Administrative Region"@en .
-
-
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/TimeOfDay
 CommonCoreOntologies:TimeOfDay rdf:type owl:Class ;
                                rdfs:subClassOf obo:BFO_0000148 ,
@@ -5360,14 +4351,6 @@ CommonCoreOntologies:TimeOfDay rdf:type owl:Class ;
                                CommonCoreOntologies:definition "A Zero-Dimensional Temporal Region that is an approximate temporal instant that is part of a Day."@en ;
                                CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/TimeOntology"^^xsd:anyURI ;
                                rdfs:label "Time of Day"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Town
-CommonCoreOntologies:Town rdf:type owl:Class ;
-                          rdfs:subClassOf CommonCoreOntologies:LocalAdministrativeRegion ;
-                          CommonCoreOntologies:definition "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
-                          CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                          rdfs:label "Town"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/VeracityMeasurementInformationContentEntity
@@ -5381,14 +4364,6 @@ CommonCoreOntologies:VeracityMeasurementInformationContentEntity rdf:type owl:Cl
                                                                  rdfs:comment "'Deviation Measurement Information Content Entity' and 'Veracity Measurement Information Content Entity' are complementary notions. Deviation is a measure of whether reality conforms to an ICE (e.g., a plan or prediction), whereas Veracity is a measure of whether a Descriptive ICE conforms to reality."@en ,
                                                                               "Note, the term 'accuracy' is avoided due to its ambiguity between: correctness-of-performance (see: 'Reliability Measurement Information Content Entity'), correctness-of-information ('Veracity Measurement Information Content Entity'), and adherance-to-expectations (see: 'Deviation Measurement Information Content Entity')."@en ;
                                                                  rdfs:label "Veracity Measurement Information Content Entity"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Village
-CommonCoreOntologies:Village rdf:type owl:Class ;
-                             rdfs:subClassOf CommonCoreOntologies:LocalAdministrativeRegion ;
-                             CommonCoreOntologies:definition "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a hamlet but smaller than that of a Town."@en ;
-                             CommonCoreOntologies:is_curated_in_ontology "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                             rdfs:label "Village"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Week
@@ -5419,26 +4394,64 @@ owl:Thing rdf:type owl:Class .
 obo:STEMIO_0001560 rdf:type owl:NamedIndividual ,
                             obo:STEMIO_0001557 ;
                    dc:creator "John Beverley"^^xsd:string ;
-                   rdfs:label "creative"@en .
+                   rdfs:label "creativity"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001561
 obo:STEMIO_0001561 rdf:type owl:NamedIndividual ,
                             obo:STEMIO_0001529 ;
+                   obo:STEMIO_0001559 obo:STEMIO_0001560 ,
+                                      obo:STEMIO_0001710 ,
+                                      obo:STEMIO_0001711 ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "math identity"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001702
-obo:STEMIO_0001702 rdf:type owl:NamedIndividual ;
+obo:STEMIO_0001702 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001706 ;
+                   obo:STEMIO_0001714 obo:STEMIO_0001712 ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "Sally"@en .
 
 
 ###  http://purl.obolibrary.org/obo/STEMIO_0001703
-obo:STEMIO_0001703 rdf:type owl:NamedIndividual ;
+obo:STEMIO_0001703 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001706 ;
+                   obo:STEMIO_0001714 obo:STEMIO_0001561 ;
                    dc:creator "John Beverley"^^xsd:string ;
                    rdfs:label "George"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001710
+obo:STEMIO_0001710 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001556 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "methodolicality"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001711
+obo:STEMIO_0001711 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001555 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "rigorousness"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001712
+obo:STEMIO_0001712 rdf:type owl:NamedIndividual ,
+                            obo:STEMIO_0001530 ;
+                   obo:STEMIO_0001559 obo:STEMIO_0001560 ,
+                                      obo:STEMIO_0001710 ,
+                                      obo:STEMIO_0001713 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "science identity"@en .
+
+
+###  http://purl.obolibrary.org/obo/STEMIO_0001713
+obo:STEMIO_0001713 rdf:type owl:NamedIndividual ,
+                            obo:MF_0000026 ;
+                   dc:creator "John Beverley"^^xsd:string ;
+                   rdfs:label "introversion"@en .
 
 
 [ obo:IAO_0000412 obo:uberon.owl
