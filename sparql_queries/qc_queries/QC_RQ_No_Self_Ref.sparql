@@ -3,12 +3,14 @@
 # Constraint Description: 
 #     Any class is rdfs:subClassOf of itself.
 
+#DRAFTING DO NOT USE
+
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?resource ?label ?value 
+SELECT DISTINCT ?s ?o 
 WHERE {
-    ?resource rdfs:subClassOf ?value ;
-        rdfs:label ?label 
-    FILTER NOT EXISTS {?entity = ?value}
+    ?s rdfs:subClassOf ?o .
+    FILTER (?s != ?o) .
+    
+#Compare counts of subclasses with classes
 }
-ORDER BY ?resource
