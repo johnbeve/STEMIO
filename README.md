@@ -1,4 +1,4 @@
-# STEMMIO
+# STEMIO
 The scope of the Science, Technology, Engineering, and Mathematics Identity Ontology Identity Ontology (STEMIO) is specific to terminological content relevant to the STEM identity constructs, metrics, and analytics.
 
 STEM identity may be described as the ways in which individuals fit within STEM fields, and in particular, how individuals make meaning of scientific experiences and how society structures possile meanings for those experiences. STEM identity plays a powerful role in an individual's success or failure, in academic and career environments. 
